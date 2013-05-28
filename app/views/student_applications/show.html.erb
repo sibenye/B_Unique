@@ -1,0 +1,263 @@
+<div class="main_right_g">
+	<div class="header">
+		
+		<div class="inner">
+			<h2>Student Application</h2>
+		</div>
+	</div>
+	<div class="center_g">
+		<%if flash[:notice] then%>
+			<div class="notice"><%= flash[:notice]%></div>
+		<%end%>
+		<p>Please verify that the information below is correct.</p>
+	<table>
+	<tr>
+    <td class="field"  colspan="3">Admission Session<br />
+    <%= label_tag @student_application.admission_session%></td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Profile:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :First_Name %></span><br />
+    <%= label_tag @student_application.first_name%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Last_Name %></span><br />
+    <%= label_tag @student_application.last_name%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Email %></span><br />
+    <%= label_tag @student_application.email%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+  	<span class="label"><%= label_tag :Marital_Status %></span>
+  	<br/>
+  	<%= label_tag @student_application.marital_status%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Date_of_birth %></span><br />
+    <%= label_tag @student_application.dob%>
+  </td>
+  <td class="field">
+  	<span class="label"><%= label_tag :Gender %></span>
+  	<br/>
+  	<%= label_tag @student_application.gender%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Home_Phone %></span><br />
+    <%= label_tag @student_application.home_phone%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Mobile_Phone %></span><br />
+    <%= label_tag @student_application.mobile_phone%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Other_Phone %></span><br />
+    <%= label_tag @student_application.other_phone%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Education %></span><br />
+    <%= label_tag @student_application.education%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Street %></span><br />
+    <%= label_tag @student_application.address%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :City %></span><br />
+    <%= label_tag @student_application.city%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :State %></span><br />
+    <%= label_tag @state%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :ZipCode %></span><br />
+    <%= label_tag @student_application.zipcode%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Country %></span><br />
+    <%= label_tag @country%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label">SSN</span><br />
+    <%= label_tag @student_application.ssn%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Drivers_License_Number %></span><br />
+    <%= label_tag @student_application.dl_number%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Issue_State %></span><br />
+    <%= label_tag @issueState%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Applying_for %></span><br />
+  	<%= label_tag @student_application.applying_for%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Will_attend %></span><br />
+  	<%= label_tag @student_application.student_type%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :During %></span><br />
+  	<%= label_tag @student_application.period%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field"  colspan="3">
+  	<span class="label"><%= label_tag :Level_of_committment %></span>
+  	<br/>
+  	<%= label_tag @student_application.committment%>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Current or Previous Employment:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field"  colspan="3">
+    <span class="label"><%= label_tag :Employer_Name %></span><br />
+    <%= label_tag @student_application.employer_name%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Employer_Phone %></span><br />
+    <%= label_tag @student_application.employer_number%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Employer_address %></span><br />
+    <%= label_tag @student_application.employer_address%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :City %></span><br />
+    <%= label_tag @student_application.employer_city%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Employer_State %></span><br />
+    <%= label_tag @employerState%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :ZipCode %></span><br />
+    <%= label_tag @student_application.employer_zipcode%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Country %></span><br />
+    <%= label_tag @employerCountry%>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Emergency Contact:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Name %></span><br />
+    <%= label_tag @student_application.emergency_name%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Home_Phone %></span><br />
+    <%= label_tag @student_application.emergency_home_number%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Mobile_Phone %></span><br />
+    <%= label_tag @student_application.emergency_mobile_number%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :Relationship %></span><br />
+    <%= label_tag @student_application.emergency_relationship%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Address %></span><br />
+    <%= label_tag @student_application.emergency_address%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :City %></span><br />
+    <%= label_tag @student_application.emergency_city%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :State %></span><br />
+    <%= label_tag @emergencyState%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :ZipCode %></span><br />
+    <%= label_tag @student_application.emergency_zipcode%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :Country %></span><br />
+    <%= label_tag @emergencyCountry%>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		Medical Information:
+  	</td>
+  </tr>
+  <tr>  
+  <td class="field">
+    <span class="label"><%= label_tag :List_any_physical_disability %></span><br />
+    <%= text_area_tag :message, @student_application.physical_disability, :size => "20x5", :readonly=>'readonly'%>
+  </td>
+  <td class="field">
+    <span class="label"><%= label_tag :List_any_medication %></span><br />
+    <%= text_area_tag :message, @student_application.medication, :size => "20x5", :readonly=>'readonly'%>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span></span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field" colspan="3">
+    <span class="label"><%= label_tag :Brief_summary_of_wanting_this_career %></span><br />
+    <%= text_area_tag :message, @student_application.summary, :size => "50x15", :readonly=>'readonly' %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= label_tag :How_did_you_hear_of_us %></span><br />
+    <%= label_tag @student_application.referrer%>
+  </td>
+   <td class="field">
+  </td>
+  </tr>
+  
+   <tr> 
+  <td class="actions">
+    <%= link_to 'Edit', edit_student_application_path(@student_application) %>   |
+       <%= link_to 'Continue', app_submission_confirmation_path(@student_application.application_code) %>
+  </td>
+  </tr>
+  </table>
+		
+	</div>
+	<div class="bottom">
+		
+	</div>		
+</div>

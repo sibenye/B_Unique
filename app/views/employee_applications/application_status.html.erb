@@ -1,0 +1,73 @@
+<div class="main_right_g">
+	
+		<% if @message != nil and !@message.eql?("") and @result != nil then%>
+		<div class="header">
+		<div class="inner">
+		</div>
+	</div>
+	<div class="center_g">
+		<div class="notice">Your Application was found</div>
+		<table>
+			<tr>
+		    <td class="label">Status</td>
+		    <td class="field"><%=@message%></td>
+		  </tr>
+		  <tr>
+		    <td class="label">First Name</td>
+		    <td class="field"><%=@firstName %></td>
+		  </tr>
+		  <tr>
+		    <td class="label">Last Name</td>
+		    <td class="field"><%=@lastName%></td>
+		  </tr>
+		  <tr>
+		    <td class="label">Application ID</td>
+		    <td  class="field"><%=@appCode%></td>
+		  </tr>
+		  <tr>
+		    <td class="label">Applied For</td>
+		    <td class="field"><%=@appliedFor%></td>
+		  </tr>
+		  <tr>
+		    <td class="label">Submitted On</td>
+		    <td class="field"><%=@submitDate%></td>
+		  </tr>
+		</table>
+	</div>
+		<%else%>
+		<div class="header">
+		<div class="inner">
+			<h2>Check Application Status</h2>
+		</div>
+	</div>
+	<div class="center_g">
+		<%if @message == nil and @result == nil and @check != nil then%>
+			<div class="error">No Record of your Application was found</div>
+		<%end%>
+		<% if flash[:error] then%>
+			<div class="error"><%=flash[:error]%></div>
+		<%end%>
+		<% form_tag(employee_application_status_path) do %>		
+		<table>
+			<tr ><td class="label">* All fields are required</td><td></td></tr>
+		  <tr>
+		    <td class="label">First Name</td>
+		    <td class="field"><%= text_field_tag :first_name, params[:first_name], :maxlength => "45", :size => "25" %></td>
+		  </tr>
+		  <tr>
+		    <td class="label">Last Name</td>
+		    <td class="field"><%= text_field_tag :last_name, params[:last_name], :maxlength => "45", :size => "25" %></td>
+		  </tr>
+		  <tr>
+		    <td class="label">Application ID</td>
+		    <td  class="field"><%= text_field_tag :app_code, params[:app_code], :maxlength => "45", :size => "25" %></td>
+		  </tr>
+		   <tr>
+		   <td></td> <td><%= submit_tag ('Check', :class => "actions", :name => "check") %></td>
+		   </tr>
+		</table>
+		<% end %>
+
+</div>
+<%end%>
+</div>

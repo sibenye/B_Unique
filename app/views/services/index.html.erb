@@ -1,0 +1,55 @@
+<h2>Listing Services</h2>
+<div class="center">
+<p style="color: green"><%= notice %></p>
+<table>
+	<tr>
+		<td><%= link_to 'New Category', new_service_category_path %></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td><%= link_to 'New Service', new_service_path %></td>
+		<td>&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;</td>
+	</tr>
+<% @servicesByCat.each_pair do |category, services| %>
+
+<tr><th colspan="5"><%= category%></th></tr>
+  <tr>
+  	<th>Service Name</th>
+    <th>Description 1</th>
+    <th>Description 2</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% services.each do |service| %>
+  <tr>
+  	<td><%= service.name %></td>
+  	<td><%= service.description1 %></td>
+  	<td><%= service.description2 %></td>
+  	<td><%= service.price %></td>
+    <td><%= link_to 'Edit', edit_service_path(service) %></td>
+    <td><%= link_to 'Delete', service_path(service), :method => :delete, :confirm => 'Are you sure?' %></td>
+    
+  </tr>
+  
+<% end %>
+<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td>&nbsp;&nbsp;</td>
+	</tr>
+<% end %>
+</table>
+</div>

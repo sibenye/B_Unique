@@ -1,0 +1,35 @@
+<div class="main_right">
+<h2>Please Log In</h2>
+<p style="color: red;"><%=flash[:error]%></p>
+
+<div class="center">
+<% form_tag(:controller => "administrators", :action => "login", :method => "post", :class => "nifty_form") do %>
+
+	<table>
+		<tr>
+			<th><%= label_tag :Username %></th>
+			<th><%= label_tag :Password %></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+			    <%= text_field_tag(:username, nil, :maxlength => "30", :size => "30")%>
+			  </div>
+			</td>
+			<td>
+				<div class="field">
+			    <%= password_field_tag(:password, nil, :maxlength => "30", :size => "30")%>
+			  </div>
+			</td>
+			<td>
+				<div class="actions">
+			    <%= submit_tag 'Log In'%>
+			  </div>
+			</td>
+		</tr>
+  
+  </table>
+<% end %>
+</div>
+</div>

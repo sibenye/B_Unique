@@ -1,0 +1,31 @@
+<h1>New administrator</h1>
+
+<% form_for @administrator, :url => { :action => "create" } do |f| %>
+  <%= f.error_messages %>
+
+	<div class="field">
+    <%= f.label :Name %><br />
+    <%= f.text_field :admin_name, :value => @administrator.admin_name, :maxlength => "30", :size => "30"%>
+  </div>
+  <div class="field">
+    <%= f.label :Username %><br />
+    <%= f.text_field :username, :value => @administrator.username, :maxlength => "30", :size => "30"%>
+  </div>
+  <div class="field">
+    <%= f.label :Password %><br />
+    <%= f.text_field :password, :value => @administrator.password, :maxlength => "30", :size => "30" %>
+  </div>
+  <div class="field">
+    <%= f.label :Clearance_level %><br />
+    <%= select(:administrator, :clearance, @levels) %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field(:created_at, :value => @date) %>
+     <%= f.hidden_field(:modified_at, :value => @date) %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Add'%>
+  </div>
+<% end %>
+
+<%= link_to 'Back', administrators_path %>

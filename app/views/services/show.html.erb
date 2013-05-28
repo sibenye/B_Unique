@@ -1,0 +1,28 @@
+<h2><%=@service.name%> Service</h2>
+<div class="center">
+  
+  <div class="field">
+    <%= label_tag :Name %><br />
+    <%= text_field_tag :name, :value => @service.name, :maxlength => "55", :size => "25", :readonly=>'readonly'%>
+  </div>
+  <div class="field">
+    <%= label_tag :Description_1 %><br />
+    <%= text_field_tag :description1, :value => @service.description1, :maxlength => "55", :size => "35", :readonly=>'readonly'%>
+  </div>
+  <div class="field">
+    <%= label_tag :Description_2 %><br />
+    <%= text_field_tag :description2, :value => @service.description2, :maxlength => "55", :size => "35", :readonly=>'readonly'%>
+  </div>
+  <div class="field">
+    <%= label_tag :Price %><br />
+    <%= text_field_tag :price, :value => @service.price, :maxlength => "10", :size => "5", :readonly=>'readonly'%>
+  </div>
+  <div class="field">
+    <%= label_tag :Category %><br />
+    <%= text_field_tag :category, :value => @category, :maxlength => "40", :size => "25", :readonly=>'readonly'%>
+  </div>
+      
+<br /><br />
+
+<%= link_to 'Back', services_path %> | <%= link_to 'Edit', edit_service_path %>
+</div>

@@ -1,0 +1,56 @@
+/*// Place all the styles related to the Applications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+.grandtable {
+  margin: 30px auto;
+  text-align: center;
+}
+
+.grandbutton {
+	border: 3px solid #848484;
+	margin: 0 20px 0 20px;
+	padding: 10px;
+	font-family: sans-serif, Tahoma;
+	font-size: 18px;
+	color: #151515;
+	font-weight: bold;
+	background: #2EFE2E;
+	border-radius: 10px 10px;
+	
+	
+}
+
+a .grandbutton:hover{
+	color: #6E6E6E;
+	background: #E1F5A9;
+	border-color: #151515;
+	text-decoration: none;
+}
+
+.instruction {
+	margin-top:5px;
+	width: auto;
+	padding: 10px;
+	background-color: #58FA58;
+	color: #000000;
+	font-family: Courier;
+	font-size: 12px;
+	font-weight: bold;
+	
+	border: 1px solid #000000;
+	
+}
+
+.appId {
+	margin: 10px auto;
+	padding: 10px;
+	text-align: center;
+	background-color: #F3F781;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px 5px;
+	color: #292A0A;
+	font-family: Courier;
+	font-size: 16px;
+	font-weight: bold;
+}

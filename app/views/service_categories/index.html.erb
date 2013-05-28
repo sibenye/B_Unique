@@ -1,0 +1,21 @@
+<h2>Listing Service Categories</h2>
+<div class="center">
+<p style="color: green"><%= notice %></p>
+<table>
+  <tr>
+  	<th>Category Name</th>
+    <th></th>
+  </tr>
+
+<% @service_categories.each do |cat| %>
+  <tr>
+  	<td><%= cat.name %></td>
+    <td><%= link_to 'Edit', edit_service_category_path(cat) %></td>
+  </tr>
+<% end %>
+<tr>
+	<td><%= link_to 'New Category', new_service_category_path %></td>
+	<td><%= link_to 'Back Services page', services_path %></td>
+</tr>
+</table>
+</div>

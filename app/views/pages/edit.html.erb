@@ -1,0 +1,32 @@
+<div class="main_right">
+<h2>Edit Page</h2>
+<div class="center">
+<% form_for @page, :url => { :action => "update" } do |f| %>
+  
+  <div class="field">
+    <%= f.label :Title %><br />
+    <%= f.text_field :title, :value => @page.title, :maxlength => "40", :size => "25"%>
+  </div>
+  <div class="field">
+    <%= f.label :Body %><br />
+    <%= f.text_area :body, :value => "#{@page.body}", :size => "90x20" %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :Page_Name %><br />
+    <%= f.text_field :name, :value => @page.name, :maxlength => "20", :size => "15" %>
+  </div> 
+  <div class="field">
+    <%= f.label :Path_Name %><br />
+    <%= f.text_field :path_name, :value => @page.path_name, :maxlength => "20", :size => "15"  %>
+  </div> -->
+  
+    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', :controller => :pages, :action => :index %>
+</div>
+</div>

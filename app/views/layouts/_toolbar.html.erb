@@ -1,0 +1,21 @@
+<% if session[:level] != nil and session[:level] != 0%>
+<div id=toolbar>
+	<div class="toolbar_head">
+		<div class="usher">Welcome <%=session[:adminName]%></div>
+		<span class="logout"><%= link_to 'Log Out', adminLogout_path%></span>
+	</div>
+	<div class="clear"></div>
+	<div class="toolbar_menu">
+		<span class="toolbar_button"><%= link_to 'DashBoard', dashboard_path%></span>
+		<span class="toolbar_button"><%= link_to 'Pages', pages_path%></span>
+		<span class="toolbar_button"><%= link_to 'Services', services_path%></span>
+		<span class="toolbar_button"><%= link_to 'Gallery', dashboard_path%></span>
+		<span class="toolbar_button"><%= link_to 'Adverts', dashboard_path%></span>
+		<span class="toolbar_button"><%= link_to 'Applications', dashboard_path%></span>
+		<span class="toolbar_button"><%= link_to 'Emails', dashboard_path%></span>
+		<span class="toolbar_button"><%= link_to 'Admins', dashboard_path%></span>
+	</div>
+</div>
+<div class="clear"></div>
+	
+<%end%>

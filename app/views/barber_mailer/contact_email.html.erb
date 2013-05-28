@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2><%= @message["name"] %> sent a message from bubaonline.com contact page</h2>
+    <br/>
+    <p>And would like more information about: <br/>
+    
+    	<%= @message["financial_aid"]%><br />
+    	<%= @message["courses"]%><br/>
+    	<%= @message["admissions"]%><br/>
+    	<%= @message["other"]%><br/>
+    </p>
+    
+    
+      <h3>Profile: </h3>
+    
+    <table>
+    	<tr>
+    		<td>Name: </td><td><%= @message["name"] %></td>
+    	</tr>
+    	<tr>
+    		<td>Email: </td><td><%= @message["email"] %></td>
+    	</tr>
+    	<tr>
+    		<td>Education: </td><td><%= @message["education"]%></td>
+    	</tr>
+    	<tr>
+    		<td>Would like to start: </td><td><%= @message["start"]%></td>
+    	</tr>
+    	<tr>
+    		<td>Phone: </td><td><%= @message["phone"] %></td>
+    	</tr>
+    	<tr>
+    		<td>Availability: </td><td><%= @message["period"] %></td>
+    	</tr>
+    	</table>
+    	<br/>
+    	
+    	
+      <h3>Address: </h3>
+      <%= @message["address"]%> <%= @message["city"] %> <br/>
+      <%= @message["state"] %> <%= @message["zipcode"] %>
+    	
+    <br />
+    
+    
+      <h3>Message: </h3>
+      <%= @message["body"] %>
+    
+    
+  </body>
+</html>

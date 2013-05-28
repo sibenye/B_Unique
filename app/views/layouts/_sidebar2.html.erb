@@ -1,0 +1,25 @@
+<div class="main_left_g">
+		<div class="spc">
+			<!-- <img width="160" height="120" src="images/solid.png" /> -->
+			<span>
+				<h3>B-Unique</h3>
+			</span>
+			<br/>
+			<span>
+				<h3>Barber Academy</h3>
+			</span>
+			<br/>
+			<br/>
+		</div>
+		<div class="menu_btn_g">
+			<%= link_to 'Create New Application', if @path.eql?('s') then new_student_application_path else new_employee_application_path end, :class => @new %>
+		</div>
+		<div class="menu_btn_g">
+			<%= link_to 'Check Status of Application', if @path.eql?('s') then student_application_status_path else employee_application_status_path end, :class => @status %>
+		</div>
+		<br />
+		<div>
+			<%= link_to '<-- Back to Home page', '/'%>
+		</div>
+		
+	</div>

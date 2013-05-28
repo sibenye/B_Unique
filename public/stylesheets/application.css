@@ -1,0 +1,469 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+@charset "utf-8";
+
+body {
+	margin:0;
+	padding:0;
+	width:100%;
+	background:#555555;
+	
+}
+
+/* main */
+#container {
+	border-right:thick red; 
+	border-left:2px solid #000000;
+	background:#FFFFFF;
+	margin:0 auto;
+	padding:0 10px; 
+	width:1145px;
+	
+}
+
+#container h1 { 
+	font:normal 14px Arial, Helvetica, sans-serif; 
+	color:#2a2a2a;
+	font-weight: bold;
+}
+
+#container h2 { 
+	font:normal 18px Arial, Helvetica, sans-serif; 
+	color:#2a2a2a; 
+	padding:10px 5px; 
+	margin:0;
+}
+
+#container h3 { 
+	font:normal 16px; 
+	padding:5px; 
+	margin:0; 
+}
+
+#container p {
+	font:normal 17px Helvetica, sans-serif, Times, Arial; 
+	color:#000000; 
+	padding:5px; 
+	margin:0;
+}
+
+#container ul {
+	width: 400px;
+	border-left: 1px solid #F0F0F0;
+	list-style: none;
+}
+
+#container li {
+	padding: 3px;
+	margin: 5px auto;
+	font-weight: bold;
+	font-family: sans-serif;
+	
+}
+
+
+/* sidebar */
+.main_left {
+	width: 160px;
+	margin-top:5px;
+	padding: 10px;
+	font: normal 12px Arial, Helvetica, sans-serif;
+	float: left;
+	background: url('/images/sidebg.png') repeat-x;
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+}
+
+.main_left a{
+	text-decoration:none;
+}
+
+.extreme_right {
+	width: 160px;
+	margin-top:5px;
+	padding: 10px;
+	font: normal 12px Arial, Helvetica, sans-serif;
+	float: right;
+	background: url('/images/sidebg.png') repeat-x;
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	/*border-right: 1px solid #cccccc;
+	border-left: 1px solid #cccccc;*/
+}
+
+.extreme_right a{
+	text-decoration:none;
+}
+
+.menu_btn {
+	background:#FFFFFF;
+	margin: 0;
+	padding:5px;
+	border-top: 1px solid #2A2A2A;	
+	cursor: pointer;
+	font-weight:bold;
+	font-size: 14px;
+}
+
+.menu_btn a {
+	color:#330033;
+	display: block;
+	
+}
+
+.menu_btn:hover {
+	background:#333333;
+	color:#FFFFFF;
+}
+
+.menu_btn a:hover {
+	color:#FFFFFF;
+}
+
+.menu_btn a.selected {
+	background:url('/images/menubg.png') repeat;
+	color:#330000;
+	padding:5px;
+}
+
+/* content */
+.main_right {
+	margin:auto;
+	width: 790px;
+	
+	
+}
+
+.main_right .header {
+	margin:0 auto;
+	width: auto;
+	padding: 10px;
+	height: 300px;	
+}
+
+.main_right .header .logo {
+	float: left;
+	margin: 0;
+	width:295px;
+}
+
+.main_right .inner {
+	margin:0 10px;
+	text-align: left;
+	border-bottom: 2px solid #0033CC;
+	
+}
+
+.main_right .header .ads {
+	margin:0;
+	float: right;
+	
+}
+
+.main_right .header .ads .lbox {
+	width: 400px;
+	background-color: #FF0000;
+	padding: 10px;
+	color:#FFFFFF;
+	margin:0;
+	border-radius: 10px 10px;
+}
+
+
+.main_right .header .ads .ad1 {
+	padding: 0;
+	margin-bottom: 5px;
+	width: 450px;
+	height: 140px;
+	background: url('/images/headimage.png') no-repeat;
+}
+
+.main_right .header .ads .ad2 {
+	padding: 0;
+	margin-bottom: 0;
+	width: 450px;
+	height: 140px;
+}
+
+/*.main_right .header .ad2 {
+	padding-left: 10px;
+	margin: 0 auto;
+}*/
+
+.center {
+	margin:10px;
+	width: auto;
+	padding: 10px;
+	border-top:1px solid #555555;
+	border-radius: 10px 10px;
+	background: url('/images/sidebg.png') repeat-x;
+	
+}
+
+.bottom {
+	margin:0;
+	width: 100%;
+	padding: 10px;	
+}
+
+.footer {
+	margin:0 auto;
+	width: 100%;
+	height: 30px;
+	padding: 10px;
+	color: #FFFFFF;	
+	background: #000000;
+	font-size: 10px;
+	font-family: Arial;
+}
+
+.footer .inner_footer {
+	margin:0 100px;
+	width: auto;
+	padding: 10px;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear:both;
+}
+.cent {
+ 	margin: 0 auto;
+ }
+ 
+.actions {
+	background: url('/images/sidebg.png') repeat-x;
+}
+
+.red {
+	color: red;
+}
+
+.enroll {
+	width: 160px;
+	background: #FFFFFF;
+	height: 120px;
+	overflow: hidden;
+	margin-bottom: 10px;
+	border-radius:10px 10px;
+	cursor:hand;
+	border: 2px solid;
+}
+
+.enroll:hover {
+	border-color: yellow;
+}
+
+.enroll a {
+	display: block;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14px;
+	color:red;
+	font-weight: bold;
+	
+}
+
+.enroll a:hover span{
+	border-color: #0033CC;
+}
+
+#sbox {
+	width: 150px;
+	background-color: #FFFFCC;
+	padding: 10px;
+	font-weight:bold;
+	cursor: pointer;
+	margin:5px 0 10px 0;
+	
+}
+
+#sbox2 {
+	width: 150px;
+	background:none;
+	padding: 10px;
+	font-weight:bold;
+	margin:10px;
+	
+}
+
+.noshow {
+	display: none;
+}
+
+.note {
+	font-size: 10px;
+	color:#333333;
+}
+
+.label {
+	font:Arial;
+	font-size: 12px;
+	color:#333333;
+	margin: 5px 20px 5px 10px;
+	width: 130px;
+}
+
+.error {
+	color: #B40404;
+	background-color: #F78181;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px;
+	font-family: Helvetica;
+}
+
+.notice {
+	color: #088A08;
+	background-color: #2EFE2E;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px;
+	font-family: Helvetica;
+}
+
+
+
+.employee_desc {
+	margin-left:10px;
+	font:12px;
+}
+
+.spc {
+	padding-right: 10px;
+	font-weight:bold;
+	text-align: center;
+	margin: 0 auto;
+	
+}
+
+#lbox{
+	width: auto;
+	float: left;
+	background-color: #FF0000;
+	padding: 10px;
+	color:#FFFFFF;
+	margin:0;
+}
+
+#longbox {
+	margin-top:5px;
+	width: auto;
+	height:95px;
+	padding: 10px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.price_list table {
+	margin: 5px auto;
+	width: auto;
+	background: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	
+	
+}
+
+.price_list table tr {
+	height: 10px;
+	
+}
+
+.price_list table tr th {
+	padding: 0 10px;
+	text-align: center;
+	
+}
+
+.price_list table tr td {
+	font: 10px;
+	padding: 0 10px;
+	text-align: center;
+	border: 1px solid #FFFFFF;
+	background: #F2F5A9;
+	
+}
+
+.topicDropDwn {
+	text-align: center;
+	background:url('/images/menubg.png') repeat;
+	color:#330000;
+	padding:5px;
+	font: normal 16px Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+/*Admin Toolbar*/
+
+#toolbar {
+	width: 100%;
+	background:#151515;
+	margin: 0 auto;
+	border-bottom: 2px solid #E6E6E6;
+	border-style: ridge;
+	
+}
+
+#toolbar .toolbar_head{
+	padding: 5px;
+	color: #FFFFCC;
+	margin: 5px 0;
+	font-family:Helvetica;
+}
+
+#toolbar a {
+	text-decoration:none;
+	color: #FFFFCC;
+}
+
+#toolbar a:hover{
+	
+}
+
+#toolbar .toolbar_head .logout {
+	font-size: 14px;
+	float: right;
+	border-radius: 10px 10px;
+	border-color: #FFFFCC;
+	border: 1px solid;
+	padding: 5px;
+}
+
+#toolbar .toolbar_head .usher {
+	padding:5px;
+	float: left;
+	margin:0;
+	width: 200px;
+}
+
+#toolbar .toolbar_menu {
+	border-top: 1px solid #FFFFFF;
+	padding: 5px;
+	color: #FFFFFF;
+}
+
+#toolbar .toolbar_menu .toolbar_button {
+	border-right: 1px solid #6E6E6E;
+	border-right-style: groove;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+}
+

@@ -1,0 +1,288 @@
+<div class="main_right_g">
+	<div class="header">
+		
+		<div class="inner">
+			<h2>Student Application</h2>
+		</div>
+	</div>
+	<div class="center_g">
+		<% if flash[:error] then%>
+		<div class="error"><%=flash[:error]%></div>
+		<%end%>
+		<% form_for(@student_application) do |f| %>
+		  <%= f.error_messages %>
+	<table>
+	<tr>
+    <td class="field"  colspan="3">Admission Session <span class="red">*</span><br />
+    <%= select(:student_application, :admission_session, @sessions) %></td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Profile:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :First_Name%><span class="red"> *</span></span><br />
+    <%= f.text_field :first_name, :value => params[:first_name], :maxlength => "45", :size => "25"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Last_Name %><span class="red"> *</span></span><br />
+    <%= f.text_field :last_name, :value => params[:last_name], :maxlength => "45", :size => "25"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Email %><span class="red"> *</span></span><br />
+    <%= f.text_field :email, :value => params[:email], :maxlength => "45", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+  	<span class="label"><%= f.label :Marital_Status %><span class="red"> *</span></span>
+  	<br/>
+  	<%= radio_button(:student_application, :marital_status, "Married", :checked => @marriedChecked) %>
+  	<span class="label"><%= f.label :Married %></span>
+  	<%= radio_button(:student_application, :marital_status, "Single", :checked => @singleChecked) %>
+  	<span class="label"><%= f.label :Single %></span>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Date_of_birth %><span class="red"> *</span> yyyy/mm/dd</span><br />
+    <%= f.text_field :dob, :value => params[:dob], :maxlength => "15", :size => "15"%>
+  </td>
+  <td class="field">
+  	<span class="label"><%= f.label :Gender %><span class="red"> *</span></span>
+  	<br/>
+  	<%= radio_button(:student_application, :gender, "Female", :checked => @femaleChecked) %>
+  	<span class="label"><%= f.label :Female %></span>
+  	<%= radio_button(:student_application, :gender, "Male", :checked => @maleChecked) %>
+  	<span class="label"><%= f.label :Male %></span>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Home_Phone %></span><br />
+    <%= f.text_field :home_phone, :value => params[:home_phone], :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Mobile_Phone %><span class="red"> *</span></span><br />
+    <%= f.text_field :mobile_phone, :value => params[:mobile_phone], :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Other_Phone %></span><br />
+    <%= f.text_field :other_phone, :value => params[:other_phone], :maxlength => "20", :size => "15"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Education %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :education, @education) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Address %><span class="red"> *</span></span><br />
+    <%= f.text_field :address, :value => params[:address], :maxlength => "70", :size => "40"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :City %><span class="red"> *</span></span><br />
+    <%= f.text_field :city, :value => params[:city], :maxlength => "40", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :State %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :state, @states) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :ZipCode %><span class="red"> *</span></span><br />
+    <%= f.text_field :zipcode, :value => params[:zipcode], :maxlength => "5", :size => "7"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Country %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :country, @countries) %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label">SSN<span class="red"> *</span></span><br />
+    <%= f.text_field :ssn, :value => params[:ssn], :maxlength => "9", :size => "9"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Drivers_License_Number %></span><br />
+    <%= f.text_field :dl_number, :value => params[:dl_number], :maxlength => "35", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Issue_State %></span><br />
+    <%= select(:student_application, :dl_issue, @issueStates) %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Applying_for %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :applying_for, [[params[:applying_for],params[:applying_for]],['Master Barber','Master Barber'],['Registered Barber','Registered Barber']]) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Will_attend %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :student_type, [[params[:student_type],params[:student_type]],['Full_Time_40hr','Full_Time_40hr'],['Quarter_Time_30hr','Quarter_Time_30hr']]) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :During %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :period, [['DAY','DAY']]) %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field"  colspan="3">
+  	<span class="label"><%= f.label :What_is_your_level_of_committment_right_now? %></span>
+  	<br/>
+  	<%= radio_button(:student_application, :committment, "I am ready to get started", :selected => 'selected') %>
+  	<span class="label"><%= f.label :I_am_ready_to_get_started %></span>
+  	<%= radio_button(:student_application, :committment, "Gathering Information and would like to know what kind of financial aid is available") %>
+  	<span class="label"><%= f.label :Gathering_Information_and_would_like_to_know_what_kind_of_financial_aid_is_available %></span>
+  	<br />
+  	<%= radio_button(:student_application, :committment, "Gathering Information only" ) %>
+  	<span class="label"><%= f.label :Gathering_Information_only %></span>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Current or Previous Employment:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field"  colspan="3">
+    <span class="label"><%= f.label :Employer_Name %></span><br />
+    <%= f.text_field :employer_name, :value => params[:employer_name], :maxlength => "85", :size => "45"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Employer_Phone %></span><br />
+    <%= f.text_field :employer_number, :value => params[:employer_number], :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Employer_address %></span><br />
+    <%= f.text_field :employer_address, :value => params[:employer_address], :maxlength => "85", :size => "45"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :City %></span><br />
+    <%= f.text_field :employer_city, :value => params[:employer_city], :maxlength => "40", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Employer_State %></span><br />
+    <%= select(:student_application, :employer_state, @employerStates) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :ZipCode %></span><br />
+    <%= f.text_field :employer_zipcode, :value => params[:employer_zipcode], :maxlength => "5", :size => "7"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Country %></span><br />
+    <%= select(:student_application, :employer_country, @employerCountries) %>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Emergency Contact:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Name %><span class="red"> *</span></span><br />
+    <%= f.text_field :emergency_name, :value => params[:emergency_name], :maxlength => "55", :size => "25"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Home_Phone %></span><br />
+    <%= f.text_field :emergency_home_number, :value => params[:emergency_home_number], :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Mobile_Phone %><span class="red"> *</span></span><br />
+    <%= f.text_field :emergency_mobile_number, :value => params[:emergency_mobile_number], :maxlength => "20", :size => "15"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Relationship %><span class="red"> *</span></span><br />
+    <%= f.text_field :emergency_relationship, :value => params[:emergency_relationship], :maxlength => "15", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Address %><span class="red"> *</span></span><br />
+    <%= f.text_field :emergency_address, :value => params[:emergency_address], :maxlength => "85", :size => "45"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :City %><span class="red"> *</span></span><br />
+    <%= f.text_field :emergency_city, :value => params[:emergency_city], :maxlength => "40", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :State %><span class="red"> *</span></span><br />
+    <%= select(:student_application, :emergency_state, @emergencyStates) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :ZipCode %><span class="red"> *</span></span><br />
+    <%= f.text_field :emergency_zipcode, :value => params[:emergency_zipcode], :maxlength => "5", :size => "7"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Country%><span class="red"> *</span></span><br />
+    <%= select(:student_application, :emergency_country, @emergencyCountries) %>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		Medical Information:<span class="label">Type N/A if it does not apply to you</span>
+  	</td>
+  </tr>
+  <tr>  
+  <td class="field">
+    <span class="label"><%= f.label :List_any_physical_disability %></span><br />
+    <%= f.text_area :physical_disability, :value => params[:physical_disability], :size => "20x5"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :List_any_medication %></span><br />
+    <%= f.text_area :medication, :value => params[:medication], :size => "20x5"%>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span></span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field" colspan="3">
+    <span class="label"><%= f.label :Brief_summary_of_wanting_this_career %></span><br />
+    <%= f.text_area :summary, :value => params[:summary], :size => "50x15" %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :How_did_you_hear_of_us %></span><br />
+    <%= select(:student_application, :referrer, @referrers) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.hidden_field(:submitted_on, :value => @date) %></span>
+  </td>
+  </tr>
+  <tr>
+  <td class="field"  colspan="3">
+  	<!--<%#debugger%>-->
+  	<%if params[:signed].eql?("1") then%>
+  	<%= check_box(:student_application, :signed, {:checked => 'checked', :value=>1})%>
+  	<%else%>
+  	<%= check_box(:student_application, :signed, {:value=>0})%>
+  	<%end%>
+	<span class="label"><span class="red">* </span>I certify that the information given on this application is accurate to the best of my knowledge. I understand that B-Unique Barber Academy will reject my application for false information.</span>
+  </td>
+   </tr>
+   <tr> 
+  <td class="actions">
+    <%= f.submit :Save%>
+  </td>
+  </tr>
+  </table>
+		<% end %>
+		
+		<%= link_to 'Back', student_applications_path %>
+	</div>
+	<div class="bottom">
+		
+	</div>		
+</div>

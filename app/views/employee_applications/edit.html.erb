@@ -1,0 +1,267 @@
+<div class="main_right_g">
+	<div class="header">
+		
+		<div class="inner">
+
+			<h2>Employee Application</h2>
+		</div>
+	</div>
+	<div class="center_g">
+		<% if flash[:error] then%>
+		<div class="error"><%= flash[:error]%></div>
+		<%end%>
+
+			<% form_for(@employee_application) do |f| %>
+			  <%= f.error_messages %>
+			
+			  <table>
+	<tr>
+    <td class="field"  colspan="3">Position Applying For<br />
+    <%= select(:employee_application, :applying_for, @positions) %></td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Profile:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :First_Name %></span><br />
+    <%= f.text_field :first_name, :value => @employee_application.first_name, :maxlength => "45", :size => "25"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Last_Name %></span><br />
+    <%= f.text_field :last_name, :value => @employee_application.last_name, :maxlength => "45", :size => "25"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Email %></span><br />
+    <%= f.text_field :email, :value => @employee_application.email, :maxlength => "45", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+  	<span class="label"><%= f.label :Marital_Status %></span>
+  	<br/>
+  	<%= radio_button(:employee_application, :marital_status, "Married", :checked => @marriedChecked) %>
+  	<span class="label"><%= f.label :Married %></span>
+  	<%= radio_button(:employee_application, :marital_status, "Single", :checked => @singleChecked) %>
+  	<span class="label"><%= f.label :Single %></span>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Date_of_birth %></span><br />
+    <%= f.text_field :dob, :value => @employee_application.dob, :maxlength => "15", :size => "15"%>
+  </td>
+  <td class="field">
+  	<span class="label"><%= f.label :Gender %></span>
+  	<br/>
+  	<%= radio_button(:employee_application, :gender, "Female", :checked => @femaleChecked) %>
+  	<span class="label"><%= f.label :Female %></span>
+  	<%= radio_button(:employee_application, :gender, "Male", :checked => @maleChecked) %>
+  	<span class="label"><%= f.label :Male %></span>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Home_Phone %></span><br />
+    <%= f.text_field :home_phone, :value => @employee_application.home_phone, :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Mobile_Phone %></span><br />
+    <%= f.text_field :mobile_phone, :value => @employee_application.mobile_phone, :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Other_Phone %></span><br />
+    <%= f.text_field :other_phone, :value => @employee_application.other_phone, :maxlength => "20", :size => "15"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Education %></span><br />
+    <%= select(:employee_application, :education, @education) %>
+  </td>
+  <td class="field">
+    <span class="label">Address</span><br />
+    <%= f.text_field :address, :value => @employee_application.address, :maxlength => "70", :size => "40"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :City %></span><br />
+    <%= f.text_field :city, :value => @employee_application.city, :maxlength => "40", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :State %></span><br />
+    <%= select(:employee_application, :state, @states) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :ZipCode %></span><br />
+    <%= f.text_field :zipcode, :value => @employee_application.zipcode, :maxlength => "5", :size => "7"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Country %></span><br />
+    <%= select(:employee_application, :country, @countries) %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label">SSN</span><br />
+    <%= f.text_field :ssn, :value => @employee_application.ssn, :maxlength => "9", :size => "9"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Drivers_License_Number %></span><br />
+    <%= f.text_field :dl_number, :value => @employee_application.dl_number, :maxlength => "35", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Issue_State %></span><br />
+    <%= select(:employee_application, :dl_issue, @issueStates) %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label">Will work</span><br />
+    <%= select(:employee_application, :employment_type, [[@employee_application.employment_type,@employee_application.employment_type],['Full_Time_40hr','Full_Time_40hr'],['Quarter_Time_30hr','Quarter_Time_30hr']]) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Shift %></span><br />
+    <%= select(:employee_application, :period, [['DAY','DAY']]) %>
+  </td>
+  <td class="field">
+    <span class="label">Years of Experience</span><br />
+    <%= select(:employee_application, :experience, [[@employee_application.experience,@employee_application.experience],['None','None'],['1-3months','1-3months'], ['4-6months','4-6months'], ['6-12months','6-12months'],['1-3years','1-3years'],['4-6years','4-6years'], ['6-10years','6-10years'], ['11years +','11years +']]) %>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Current or Previous Employment:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field"  colspan="3">
+    <span class="label"><%= f.label :Employer_Name %></span><br />
+    <%= f.text_field :employer_name, :value => @employee_application.employer_name, :maxlength => "85", :size => "45"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Employer_Phone %></span><br />
+    <%= f.text_field :employer_number, :value => @employee_application.employer_number, :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Employer_address %></span><br />
+    <%= f.text_field :employer_address, :value => @employee_application.employer_address, :maxlength => "85", :size => "45"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :City %></span><br />
+    <%= f.text_field :employer_city, :value => @employee_application.employer_city, :maxlength => "40", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Employer_State %></span><br />
+    <%= select(:employee_application, :employer_state, @employerStates) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :ZipCode %></span><br />
+    <%= f.text_field :employer_zipcode, :value => @employee_application.employer_zipcode, :maxlength => "5", :size => "7"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Country %></span><br />
+    <%= select(:employee_application, :employer_country, @employerCountries) %>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span>Emergency Contact:</span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Name %></span><br />
+    <%= f.text_field :emergency_name, :value => @employee_application.emergency_name, :maxlength => "55", :size => "25"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Home_Phone %></span><br />
+    <%= f.text_field :emergency_home_number, :value => @employee_application.emergency_home_number, :maxlength => "20", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Mobile_Phone %></span><br />
+    <%= f.text_field :emergency_mobile_number, :value => @employee_application.emergency_mobile_number, :maxlength => "20", :size => "15"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :Relationship %></span><br />
+    <%= f.text_field :emergency_relationship, :value => @employee_application.emergency_relationship, :maxlength => "15", :size => "15"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Address %></span><br />
+    <%= f.text_field :emergency_address, :value => @employee_application.emergency_address, :maxlength => "85", :size => "45"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :City %></span><br />
+    <%= f.text_field :emergency_city, :value => @employee_application.emergency_city, :maxlength => "40", :size => "25"%>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :State %></span><br />
+    <%= select(:employee_application, :emergency_state, @emergencyStates) %>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :ZipCode %></span><br />
+    <%= f.text_field :emergency_zipcode, :value => @employee_application.emergency_zipcode, :maxlength => "5", :size => "7"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :Country %></span><br />
+    <%= select(:employee_application, :emergency_country, @emergencyCountries) %>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		Medical Information:<span class="label">Type N/A if it does not apply to you</span>
+  	</td>
+  </tr>
+  <tr>  
+  <td class="field">
+    <span class="label"><%= f.label :List_any_physical_disability %></span><br />
+    <%= f.text_area :physical_disability, :value => @employee_application.physical_disability, :size => "20x5"%>
+  </td>
+  <td class="field">
+    <span class="label"><%= f.label :List_any_medication %></span><br />
+    <%= f.text_area :medication, :value => @employee_application.medication, :size => "20x5"%>
+  </td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<span></span>
+  	</td>
+  </tr>
+  <tr>
+  <td class="field" colspan="3">
+    <span class="label"><%= f.label :Brief_summary_of_wanting_this_career %></span><br />
+    <%= f.text_area :summary, :value => @employee_application.summary, :size => "50x15" %>
+  </td>
+  </tr>
+  <tr>
+  <td class="field">
+    <span class="label"><%= f.label :How_did_you_hear_of_us %></span><br />
+    <%= select(:employee_application, :referrer, @referrers) %>
+  </td>
+  <td class="field">
+  </td>
+  </tr>
+  <tr>
+  
+   </tr>
+   <tr> 
+  <td class="actions">
+    <%= f.submit%>
+  </td>
+  </tr>
+  </table>
+		<% end %>
+		<!-- The cancel button takes you to the show page-->
+		<%= link_to 'Cancel', employee_application_path(@employee_application) %> 
+
+	</div>
+</div>

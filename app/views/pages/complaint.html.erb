@@ -1,0 +1,90 @@
+<div class="main_right">
+	<div class="header">
+		<div class="logo">
+			<img width="295" height="288" src="images/Logo1.jpg" alt="logo placement" />
+		</div>
+		<div class="ads">
+			<div class="ad1">
+						
+			</div>
+			<div class="ad2">
+				<img width="450" height="140" src="images/adimage1.png" alt="ad placement" />		
+			</div>
+		</div>
+		
+	</div>
+	<div class="inner">
+			<h2><%= markdown(@page.title)%></h2>
+		</div>
+	<div class="center">
+		<% if @sent == true%>
+		<p style="color: green"><%= notice %></p>
+		<% end %>
+		<p style="color: red"><%= flash[:error] %></p>
+		<%= markdown(@page.body)%>
+		<% form_tag(complaint_path) do  %>
+		<span class="label"><%= label_tag("* All fields are required") %></span>
+		<h1>
+				What Type of Complaint  is this?
+		</h1>
+		
+		  
+		  	<%= radio_button_tag(:complaint_type, "Hair Service", :selected => 'selected') %>
+			<span class="label"><%= label_tag(:hair_service, "Hair Service") %></span>
+			<span> &nbsp;&nbsp; </span>
+			<%= radio_button_tag(:complaint_type, "Fees") %>
+			<span class="label"><%= label_tag(:fees, "Fees") %></span>
+			<span> &nbsp;&nbsp; </span>
+			<%= radio_button_tag(:complaint_type, "Sanitary Issues") %>
+			<span class="label"><%= label_tag(:sanitary_issues, "Sanitary Issues") %></span>
+			<span> &nbsp;&nbsp; </span>
+			<%= radio_button_tag(:complaint_type, "Student Conduct") %>
+			<span class="label"><%= label_tag(:student_conduct, "Student Conduct") %></span>
+			<span> &nbsp;&nbsp; </span>
+			<%= radio_button_tag(:complaint_type, "Other") %>
+			<span class="label"><%= label_tag(:other, "Other") %></span>
+		  
+		
+			<h1>
+				Explain the circumstances surrounding your complaint:
+			</h1>
+		
+		
+		<%= text_area_tag(:message, "", :size => "50x10") %>
+		
+		<h1>
+				Personal Info:
+		</h1>
+		<table>
+		  <tr>
+		    <td class="label"><%= label_tag(:name, "Your Name  ") %></td>
+		    <td><%= text_field_tag(:name) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:address, "Your Mailing Address  ") %></td>
+		    <td><%= text_field_tag(:address) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:phone, "Your Phone Number  ") %></td>
+		    <td><%= text_field_tag(:phone) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:email, "Email Address  ") %></td>
+		    <td><%= text_field_tag(:email) %></td>
+		  </tr>
+		  
+		   <tr>
+		   <td></td> <td><%= submit_tag ('Send Complaint', :class => "actions", :name => "send") %></td>
+		   </tr>
+		  
+		</table>
+		<% end %>
+
+	</div>
+	<div class="bottom">
+		
+	</div>		
+</div>
+
+
+

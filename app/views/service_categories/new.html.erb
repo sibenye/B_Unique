@@ -1,0 +1,25 @@
+<h2>New Service Category Creation</h2>
+<div class="center">
+	<% if flash[:error] then%>
+		<div class="error"><%=flash[:error]%></div>
+		<%end%>
+<% form_for @service_category, :url => { :action => "create" } do |f| %>
+  
+  <div class="field">
+    <%= f.label :Name %><span class="red">* </span><br />
+    <%= f.text_field :name, :value => params['name'], :maxlength => "40", :size => "25"%>
+  </div>
+  <div class="field">
+    <%= f.label :Notes %><br />
+    <%= f.text_area :notes, :value => params['notes'], :size => "30x10", :maxlength => "400"%>
+  </div>
+  
+    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', service_categories_path %>
+</div>

@@ -1,0 +1,135 @@
+<div class="main_right">
+	<div class="header">
+		<div class="logo">
+			<img width="295" height="288" src="images/Logo1.jpg" alt="logo placement" />
+		</div>
+		<div class="ads">
+			<div class="ad1">
+						
+			</div>
+			<div class="ad2">
+				<img width="450" height="140" src="images/adimage1.png" alt="ad placement" />		
+			</div>
+		</div>
+		
+	</div>
+	<div class="inner">
+			<h2><%= markdown(@page.title)%></h2>
+		</div>
+	<div class="center">
+		<!--<div><%= flash[:notice]%></div>-->
+		<% if @sent == true%>
+		<p style="color: green"><%= notice %></p>
+		<% end %>
+		<p style="color: red"><%= flash[:error] %></p>
+		<h1><%= markdown(@page.body)%></h1>
+		
+		<% form_tag(contact_path) do %>		
+		<table>
+			<tr ><td class="label">* All fields are required</td><td></td></tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:name, "Name  ") %></td>
+		    <td class="field"><%= text_field_tag(:name, params[:name]) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:address, "Your Mailing Address  ") %></td>
+		    <td class="field"><%= text_field_tag(:address, params[:address]) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:city, "City  ") %></td>
+		    <td  class="field"><%= text_field_tag(:city, params[:city]) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:state, "State  ") %></td>
+		    <td class="field"><%= text_field_tag(:state, params[:state]) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:zipcode, "Zipcode  ") %></td>
+		    <td class="field"><%= text_field_tag(:zipcode, params[:zipcode]) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:phone, "Your Phone Number  ") %></td>
+		    <td class="field"><%= text_field_tag(:phone, params[:phone]) %></td>
+		  </tr>
+		  <tr>
+		    <td class="label"><%= label_tag(:email, "Email Address  ") %></td>
+		    <td class="field"><%= text_field_tag(:email, params[:email]) %></td>
+		  </tr>
+		<tr>
+		<td class="label"><%= label_tag(:education, "I Am  ") %></td>
+		<td class="field"><%= select_tag(:education, options_for_select([['A High School Graduate', 'A High School Graduate'],['Attending College', 'Attending College'],['A GED Graduate', 'A GED Graduate'],
+		['Attending High School', 'Attending High School'], ['Did not complete High School', 'Did not complete High School']], 'A High School Graduate')) %></td>
+		</tr>
+		
+		<tr>
+		<td class="label"><%= label_tag(:start, "When would you like to Start  ") %></td>
+		<td class="field"><%= select_tag(:start, options_for_select([['As soon as possible', 'As soon as possible'],['Within 30 Days', 'Within 30 Days'],['2-3 Months', '2-3 Months'],
+		['3-6 Months', '3-6 Months'], ['6 Months or More', '6 Months or More']], 'As soon as possible')) %></td>
+		</tr>		
+		
+		<tr>
+		<td class="label"><%= label_tag(:period, "Best Time To Reach You  ") %></td>
+		<td class="field"><%= select_tag(:period, options_for_select([['Morning', 'Morning'],['Afternoon', 'Afternoon'],['Evening', 'Evening']], 'Morning')) %></td>
+		</tr>	
+		
+		<tr>
+			<td  class="label"><%= label_tag(:info, "I would like more information about  ") %></td>	
+		  <td>
+		  <%= check_box_tag(:financial_aid, "Financial Aid") %>
+			<%= label_tag(:financial_aid, "Financial Aid") %>
+			<br />
+			<%= check_box_tag(:courses, "Courses and Schedules") %>
+			<%= label_tag(:courses, "Courses and Schedules") %>
+			<br />
+			<%= check_box_tag(:admissions, "Admissions") %>
+			<%= label_tag(:admissions, "Admissions") %>
+			<br />
+			<%= check_box_tag(:other, "Other") %>
+			<%= label_tag(:other, "Other") %>
+		  </td>
+		</tr>
+			<tr>
+			<td class="label"><%= label_tag(:message, "Questions / Comments") %></td>
+			<td class="field"><%= text_area_tag(:message, params[:message], :size => "30x8") %></td>
+			</tr>
+		  <tr>
+		   <td></td> <td><%= submit_tag ('Send Message', :class => "actions", :name => "send") %></td>
+		   </tr>
+		</table>
+		<% end %>
+		
+		<p>
+			<h1>Locations: <span class="note">click on address to view map</span></h1>	
+			<div class="left">
+				<div id="add1" class="left">
+					<div id="sbox">
+						10 Liberty Lane
+						Greenville SC 29607
+					</div>
+				</div>
+				<br/>
+				<!--<div id="add2" class="left">
+					<div id="sbox">
+						3214 August Rd Greenville SC 29605
+					</div>
+				</div>-->
+			</div>
+			<div class="right">
+				<div id="map1">
+				<iframe width="480" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=10+Liberty+Lane+Greenville+SC+29607&amp;aq=&amp;sll=34.845226,-82.353001&amp;sspn=0.079458,0.158443&amp;ie=UTF8&amp;hq=&amp;hnear=10+Liberty+Ln,+Greenville,+South+Carolina+29607&amp;t=m&amp;ll=34.846283,-82.362099&amp;spn=0.01761,0.041113&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=10+Liberty+Lane+Greenville+SC+29607&amp;aq=&amp;sll=34.845226,-82.353001&amp;sspn=0.079458,0.158443&amp;ie=UTF8&amp;hq=&amp;hnear=10+Liberty+Ln,+Greenville,+South+Carolina+29607&amp;t=m&amp;ll=34.846283,-82.362099&amp;spn=0.01761,0.041113&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				</div>
+				<!--<div id="map2">
+				<iframe width="480" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=3214+August+Rd+Greenville+SC+29605&amp;aq=&amp;sll=34.842725,-82.36227&amp;sspn=0.019865,0.039611&amp;ie=UTF8&amp;hq=&amp;hnear=3214+Augusta+Rd,+Greenville,+South+Carolina+29605&amp;t=m&amp;ll=34.806122,-82.379694&amp;spn=0.021142,0.041113&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=3214+August+Rd+Greenville+SC+29605&amp;aq=&amp;sll=34.842725,-82.36227&amp;sspn=0.019865,0.039611&amp;ie=UTF8&amp;hq=&amp;hnear=3214+Augusta+Rd,+Greenville,+South+Carolina+29605&amp;t=m&amp;ll=34.806122,-82.379694&amp;spn=0.021142,0.041113&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				</div>-->	
+			</div>
+			<div class="clear"></div>
+			
+		</p>
+	</div>
+	<div class="bottom">
+		
+	</div>		
+</div>
+
+
+

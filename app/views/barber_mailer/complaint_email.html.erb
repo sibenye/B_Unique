@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2><%= @message["name"] %> sent a complaint</h2>
+    
+    <h3>Complaint Type: <%= @message["complaint_type"] %></h3>
+    <table>
+    	<tr>
+    		<td>Name: </td><td><%= @message["name"] %></td>
+    	</tr>
+    	<tr>
+    		<td>Email: </td><td><%= @message["email"] %></td>
+    	</tr>
+    	<tr>
+    		<td>Phone: </td><td><%= @message["phone"] %></td>
+    	</tr>
+    	<tr>
+    		<td>Address: </td><td><%= @message["address"]%></td>
+    	</tr>
+    	
+    </table>
+   
+    <p>
+      <h3>Complaint: </h3><%= @message["body"] %>
+    </p>
+    
+  </body>
+</html>

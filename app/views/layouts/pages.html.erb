@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%= render '/layouts/headtags' %>
+		
+	</head>
+	<body>
+		<%= render '/layouts/toolbar' %>
+		<div id="container">
+			<%= render '/layouts/sidebar' %>
+			<%= yield %>
+			<div class="clear"></div>
+		</div>
+		
+	<%= render '/layouts/footer' %>	
+	</body>
+</html>

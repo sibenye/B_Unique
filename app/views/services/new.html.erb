@@ -1,0 +1,36 @@
+<h2>New Service Creation</h2>
+<div class="center">
+	<% if flash[:error] then%>
+		<div class="error"><%=flash[:error]%></div>
+		<%end%>
+<% form_for @service, :url => { :action => "create" } do |f| %>
+  
+  <div class="field">
+    <%= f.label :Name %><span class="red">* </span><br />
+    <%= f.text_field :name, :value => params['name'], :maxlength => "55", :size => "25"%>
+  </div>
+  <div class="field">
+    <%= f.label :Description_1 %><br />
+    <%= f.text_field :description1, :value => params['description1'], :maxlength => "55", :size => "35"%>
+  </div>
+  <div class="field">
+    <%= f.label :Description_2 %><br />
+    <%= f.text_field :description2, :value => params['description2'], :maxlength => "55", :size => "35"%>
+  </div>
+  <div class="field">
+    <%= f.label :Price %><span class="label"><span class="red">* </span>eg. 0.00, no dollar sign</span><br />
+    <%= f.text_field :price, :value => params['price'], :maxlength => "10", :size => "5"%>
+  </div>
+  <td class="field">
+    <%= f.label :Select_category %><br />
+    <%= select(:service, :category, @categories) %>
+  </td>
+    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', services_path %>
+</div>

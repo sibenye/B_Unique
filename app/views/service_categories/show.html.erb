@@ -1,0 +1,16 @@
+<h2><%=@service_category.name%> Service Category</h2>
+<div class="center">
+  
+  <div class="field">
+    <%= label_tag :Name %><br />
+    <%= text_field_tag :name, :value => @service_category.name, :maxlength => "40", :size => "25", :readonly=>'readonly'%>
+  </div>
+  <div class="field">
+    <%= label :Notes %><br />
+    <%= text_area_tag :notes, @service_category.notes, :size => "30x10", :maxlength => "400", :readonly=>'readonly' %>
+  </div>
+      
+<br /><br />
+
+<%= link_to 'Back', service_categories_path %> | <%= link_to 'Edit', edit_service_category_path %>
+</div>

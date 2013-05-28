@@ -1,0 +1,54 @@
+<div class="main_right">
+	<div class="header">
+		<div class="logo">
+			<img width="295" height="288" src="images/Logo1.jpg" alt="logo placement" />
+		</div>
+		<div class="ads">
+			<div class="ad1">
+						
+			</div>
+			<div class="ad2">
+				<img width="450" height="140" src="images/adimage1.png" alt="ad placement" />		
+			</div>
+		</div>
+		
+	</div>
+	<div class="inner">
+			<h2><%= markdown(@page.title)%></h2>
+		</div>
+	<div class="center">
+		<div class="price_list">
+		
+			<% @servicesByCat.each_pair do |category, services| %>
+			
+			<div class="topicDropDwn"><%= category%></div>
+			<table>
+			<% services.each do |service| %>
+			
+			  <tr>
+			  	<td><%= service.name %></td>
+			  	<td><%= service.description1 %></td>
+			  	<td><%= service.description2 %></td>
+			  	<td><%= '$'+service.price.to_s %></td>
+			    
+			  </tr>
+			  
+			<% end %>
+				</table>
+			<% end %>
+		
+		
+		
+		<div class="clear"></div>
+		</div>
+			
+		
+		
+	</div>
+	<div class="bottom">
+		
+	</div>		
+</div>
+
+
+

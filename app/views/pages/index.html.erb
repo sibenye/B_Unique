@@ -1,0 +1,19 @@
+<div class="main_right">
+<h2>Listing Pages</h2>
+<div class="center">
+<p style="color: green"><%= notice %></p>
+<table>
+  <tr>
+  	<th>Page Name</th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr>
+  	<td><%= page.name %></td>
+    <td><%= link_to 'Edit', edit_page_path(page) %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+</div>

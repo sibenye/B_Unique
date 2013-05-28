@@ -1,0 +1,29 @@
+<h1>Listing administrators</h1>
+<p style="color: green"><%= notice %></p>
+<table>
+  <tr>
+  	<th>Admin Name</th>
+    <th>Username</th>
+    <th>Clearance Level</th>
+    <th>Created On</th>
+    <th>Modified On</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @administrators.each do |administrator| %>
+  <tr>
+  	<td><%= administrator.admin_name %></td>
+    <td><%= administrator.username %></td>
+    <td><%= administrator.clearance %></td>
+    <td><%= administrator.created_at %></td>
+    <td><%= administrator.modified_at %></td>
+    <td><%= link_to 'Edit', edit_administrator_path(administrator) %></td>
+    <td><%= link_to 'Delete', administrator, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New administrator', new_administrator_path %>
