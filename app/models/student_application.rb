@@ -112,10 +112,12 @@ def self.getAppStatus(appCode, firstName, lastName)
     result['submitDate']=row.submitted_on
     result['appliedFor']=row.applying_for
     if row.accepted != nil and row.accepted != ""
-      if row.accepted == true
+      if row.accepted == "YES"
         result['message']='You have been accepted'
-      else
+      elsif row.accepted == "NO"
         result['message']='Admission Denied'
+      elsif row.accepted == "PENDING"
+        result['message']='In Process'
       end
     else
       result['message']='In Process'
@@ -123,6 +125,12 @@ def self.getAppStatus(appCode, firstName, lastName)
   else
       result = nil
   end
+  return result
+end
+
+def self.studentApplicationSearch(session)
+  admission_session = self.sanitize(session)
+  result = self.find(:all,:conditions => "admission_session = #{admission_session}")
   return result
 end
 

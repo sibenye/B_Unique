@@ -26,5 +26,5 @@ config.action_mailer.smtp_settings = {
   :domain         => 'www.bubaonline.com',
   :authentication => :plain,
   :user_name      => 'sibenye@gmail.com',
-  :password       => 'fox..tt32698384'
+  :password       => '143chivers!'
 }

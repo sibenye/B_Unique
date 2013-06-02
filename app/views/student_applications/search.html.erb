@@ -1,0 +1,58 @@
+<h2>Student Applications</h2>
+<div class="center">
+	<p>Search</p>
+		<%if flash[:notice] then%>
+			<div class="notice"><%= flash[:notice]%></div>
+		<%end%>
+	
+	<% form_tag(manage_student_application_path, :method => 'get') do %>		
+	<table>
+		<tr>
+		  	<td class="label"><%= label_tag(:academic_aear, "Academic Year")%>&nbsp;&nbsp;
+		    <%= text_field_tag(:academic_year, params[:academic_year], :maxlength =>4, :size => 4) %></td>
+		  	<td>&nbsp;&nbsp;</td>
+			<td class="label"><%= label_tag(:academic_period, "Academic Period  ") %>&nbsp;&nbsp;
+			<%= select_tag(:academic_period, options_for_select([['January', 'January'],['April', 'April'],['July', 'July'],['October', 'October']], 'January')) %></td>
+		</tr>	
+		<tr>
+		    
+		   <td><%= submit_tag ('Search', :class => "actions", :name => "search") %></td>
+		   <td></td>
+		   <td></td>
+		   
+		</tr>
+		
+	</table>
+	<%end%>	
+	
+	<%if @hasResult == true then%>
+	<%count=0%>
+	<table>
+		<tr>
+			<td>#</td>
+		  	<th>Student Name</th>
+		  	<th>Session</th>
+		    <th>Applied For</th>
+		    <th>Submitted On</th>
+		    <th>Paid</th>
+		    <th></th>
+		</tr>
+		<% @result.each do |row| %>
+		<%count=count+1%>
+		<tr>
+			<td><%=count%></td>
+			<td><%=row.first_name + ' '+row.last_name%></td>
+		    <td><%=row.admission_session%></td>
+		    <td><%=row.applying_for%></td>
+		    <td><%=row.submitted_on.strftime("%m/%d/%Y")%></td>
+		    <td><%=row.paid%></td>
+		    <td><%= link_to 'View', admin_edit_student_application_path(row)%></td>
+		</tr>
+		<%end%>
+		
+	</table>
+	
+	
+	
+	<%end%>	
+</div>

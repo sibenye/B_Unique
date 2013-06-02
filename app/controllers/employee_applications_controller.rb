@@ -315,4 +315,14 @@ class EmployeeApplicationsController < ApplicationController
       @check = nil 
     end
   end
+  
+  def manage
+    if session[:level] == nil or session[:level] == 0
+      redirect_to :controller => :administrators, :action => :login
+    elsif !Administrator.OnlineAuthenticate(session[:bunique])
+      redirect_to :controller => :administrators, :action => :login
+    else
+      render
+    end
+  end
 end

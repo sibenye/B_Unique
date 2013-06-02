@@ -25,7 +25,9 @@ class StudentApplicationsController < ApplicationController
     
     @emergencyCountry = Country.getCountryById(@student_application.emergency_country)
     @state = State.getStateById(@student_application.state)
-    @issueState = State.getStateById(@student_application.dl_issue)
+    if !@student_application.dl_issue.empty?
+      @issueState = State.getStateById(@student_application.dl_issue)
+    end
     
     if !@student_application.employer_state.empty?
       @employerState = State.getStateById(@student_application.employer_state)
@@ -160,62 +162,7 @@ class StudentApplicationsController < ApplicationController
     @path = 's'
     @new = 'selected'
     @student_application = StudentApplication.find(params[:id])
-    
-    @countries = Country.getCountries
-    @employerCountries = Country.getCountries
-    @emergencyCountries = Country.getCountries
-    @states = State.getStates
-    @issueStates = State.getStates
-    @employerStates = State.getStates
-    @emergencyStates = State.getStates
-    @sessions = StudentApplication.calculateSession
-    
-    @stateId = @student_application.state
-    selected = State.find(@stateId)
-    @selectedState = selected.name + " " + selected.abbreviation
-    @states = @states.insert(0,[@selectedState, @stateId])
-    
-    @issueStateId = @student_application.dl_issue
-    selected = State.find(@issueStateId)
-    @selectedIssueState = selected.name + " " + selected.abbreviation
-    @issueStates = @issueStates.insert(0,[@selectedIssueState, @issueStateId])
-    
-    if !@student_application.employer_state.empty?
-      @employerStateId = @student_application.employer_state
-      selected = State.find(@employerStateId)
-      @selectEdemployerState = selected.name + " " + selected.abbreviation
-      @employerStates = @employerStates.insert(0,[@selectedEmployerState, @employerStateId])
-    else
-      @employerStates = @employerStates.insert(0,["", ""])
-    end  
-    
-    @emergencyStateId = @student_application.emergency_state
-    selected = State.find(@emergencyStateId)
-    @selectedEmergencyState = selected.name + " " + selected.abbreviation
-    @emergencyStates = @emergencyStates.insert(0,[@selectedEmergencyState, @emergencyStateId])
-    
-    if !@student_application.employer_country.empty?
-      @employerCountryId = @student_application.employer_country
-      selected = Country.find(@employerCountryId)
-      @selectedEmployerCountry = selected.name
-      @employerCountries = @employerCountries.insert(0,[@selectedEmployerCountry, @employerCountryId])
-    else
-      @employerCountries = @employerCountries.insert(0,["", ""])
-    end   
-    
-    @countryId = @student_application.country
-    selected = Country.find(@countryId)
-    @selectedCountry = selected.name
-    @countries = @countries.insert(0,[@selectedCountry, @countryId])
-    
-    @emergencyCountryId = @student_application.emergency_country
-    selected = Country.find(@emergencyCountryId)
-    @selectedEmergencyCountry = selected.name
-    @emergencyCountries = @emergencyCountries.insert(0,[@selectedEmergencyCountry, @emergencyCountryId])
-    
-    @selectedSession = @student_application.admission_session
-    @sessions = @sessions.insert(0,[@selectedSession, @selectedSession])
-    
+    organizeStateAndCountry(@student_application)
     @referrers = [[@student_application.referrer,@student_application.referrer],['Friend','Friend'],['Yellow Pages','Yellow Pages'],['Drove By','Drove By'],['Other','Other']]
     @education = [[@student_application.education,@student_application.education],['A High School Graduate', 'A High School Graduate'],['Attending College', 'Attending College'],['A GED Graduate', 'A GED Graduate'],
     ['Attending High School', 'Attending High School'], ['Did not complete High School', 'Did not complete High School']]
@@ -268,20 +215,29 @@ class StudentApplicationsController < ApplicationController
     required_fields = ['admission_session', 'first_name', 'last_name', 'email', 'marital_status', 'dob', 'gender', 'mobile_phone', 'education', 'address', 'city', 'state', 'zipcode', 'country', 'ssn', 'applying_for', 'student_type', 'period', 'emergency_name', 'emergency_mobile_number', 'emergency_relationship', 'emergency_address', 'emergency_city', 'emergency_state', 'emergency_zipcode', 'emergency_country']
     if !contactFormvalidity(required_fields, @student_application_params)
         #debugger
-        
         flash[:error] = "Please fill in the required fields"
-        redirect_to edit_student_application_path(@student_application)
-        
+        if @student_application_params['paid'] == nil or @student_application_params['paid'] == ""
+          redirect_to edit_student_application_path(@student_application)
+        else
+          redirect_to admin_edit_student_application_path(@student_application)
+        end        
     else
       @student_application_params['application_code'] = StudentApplication.generateAppID(@student_application_params['first_name'], @student_application_params['last_name'], @student_application_params['applying_for'])
 
       respond_to do |format|
         if @student_application.update_attributes(@student_application_params)
-          format.html { redirect_to(@student_application, :notice => 'Student Application was successfully updated.') }
-          format.xml  { head :ok }
+          if @student_application_params['paid'] == nil or @student_application_params['paid'] == ""
+            format.html { redirect_to(@student_application, :notice => 'Student Application was successfully updated.') }
+          else
+            format.html { redirect_to(manage_student_application_path, :notice => 'Student Application was successfully updated.') }
+          end
         else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @student_application.errors, :status => :unprocessable_entity }
+          if params[:paid] == nil or params[:paid] == ""
+            format.html { render :action => "edit" }
+          else
+            flash[:error] = "Error while updating student application"
+            redirect_to admin_edit_student_application_path(@student_application)
+          end
         end
       end
     end
@@ -327,4 +283,112 @@ class StudentApplicationsController < ApplicationController
     end
   end
   
+  def search
+    if session[:level] == nil or session[:level] == 0
+      redirect_to :controller => :administrators, :action => :login
+    elsif !Administrator.OnlineAuthenticate(session[:bunique])
+      redirect_to :controller => :administrators, :action => :login
+    else
+      if params[:search] == nil
+        @path = 's'
+        render
+      else
+        @path = 's'
+        required_fields = ['academic_year', 'academic_period']
+        if !contactFormvalidity(required_fields, nil)
+        #debugger
+        flash[:error] = "All fields are required"
+        redirect_to manage_student_application_path
+        else
+          admission_session = params[:academic_year]+' - '+params[:academic_period]+' Admission'
+          @result = StudentApplication.studentApplicationSearch(admission_session)
+          #debugger
+          @hasResult=true
+        end
+      end
+      
+    end
+  end
+  
+  def manage
+    if session[:level] == nil or session[:level] == 0
+      redirect_to :controller => :administrators, :action => :login
+    elsif !Administrator.OnlineAuthenticate(session[:bunique])
+      redirect_to :controller => :administrators, :action => :login
+    else
+      @path = 's'
+      @student_application = StudentApplication.find(params[:id])
+      organizeStateAndCountry(@student_application)
+      if @student_application.accepted == "YES" then
+        @decision = "YES"
+      elsif @student_application.accepted == "NO" then
+        @decision = [['NO','NO'],['YES','YES']]
+      else
+        @decision = [['PENDING','PENDING'],['NO','NO'],['YES','YES']]
+      end
+    end
+  end
+  
+  def organizeStateAndCountry(student_application)
+    @student_application = student_application
+    @countries = Country.getCountries
+      @employerCountries = Country.getCountries
+      @emergencyCountries = Country.getCountries
+      @states = State.getStates
+      @issueStates = State.getStates
+      @employerStates = State.getStates
+      @emergencyStates = State.getStates
+      @sessions = StudentApplication.calculateSession
+      
+      @stateId = @student_application.state
+      selected = State.find(@stateId)
+      @selectedState = selected.name + " " + selected.abbreviation
+      @states = @states.insert(0,[@selectedState, @stateId])
+      
+      if !@student_application.dl_issue.empty?
+        @issueStateId = @student_application.dl_issue
+        selected = State.find(@issueStateId)
+        @selectedIssueState = selected.name + " " + selected.abbreviation
+        @issueStates = @issueStates.insert(0,[@selectedIssueState, @issueStateId])
+      else
+        @issueStates = @issueStates.insert(0,["", ""])
+      end
+      
+      if !@student_application.employer_state.empty?
+        @employerStateId = @student_application.employer_state
+        selected = State.find(@employerStateId)
+        @selectEdemployerState = selected.name + " " + selected.abbreviation
+        @employerStates = @employerStates.insert(0,[@selectedEmployerState, @employerStateId])
+      else
+        @employerStates = @employerStates.insert(0,["", ""])
+      end  
+      
+      @emergencyStateId = @student_application.emergency_state
+      selected = State.find(@emergencyStateId)
+      @selectedEmergencyState = selected.name + " " + selected.abbreviation
+      @emergencyStates = @emergencyStates.insert(0,[@selectedEmergencyState, @emergencyStateId])
+      
+      if !@student_application.employer_country.empty?
+        @employerCountryId = @student_application.employer_country
+        selected = Country.find(@employerCountryId)
+        @selectedEmployerCountry = selected.name
+        @employerCountries = @employerCountries.insert(0,[@selectedEmployerCountry, @employerCountryId])
+      else
+        @employerCountries = @employerCountries.insert(0,["", ""])
+      end   
+      
+      @countryId = @student_application.country
+      selected = Country.find(@countryId)
+      @selectedCountry = selected.name
+      @countries = @countries.insert(0,[@selectedCountry, @countryId])
+      
+      @emergencyCountryId = @student_application.emergency_country
+      selected = Country.find(@emergencyCountryId)
+      @selectedEmergencyCountry = selected.name
+      @emergencyCountries = @emergencyCountries.insert(0,[@selectedEmergencyCountry, @emergencyCountryId])
+      
+      @selectedSession = @student_application.admission_session
+      @sessions = @sessions.insert(0,[@selectedSession, @selectedSession])
+  end
+ 
 end

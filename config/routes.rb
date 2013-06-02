@@ -47,6 +47,12 @@ ActionController::Routing::Routes.draw do |map|
   map.adminLogout 'admin/logout', :controller => 'administrators', :action => 'logout'
   map.dashboard 'admin/dashboard', :controller => 'administrators', :action => 'dashboard'
   
+  map.manage_application 'admin/manage_applications', :controller => 'applications', :action => 'manage'
+  map.manage_student_application 'admin/manage_applications/student_application', :controller => 'student_applications', :action => 'search'
+  map.manage_employee_application 'admin/manage_applications/employee_application', :controller => 'employee_applications', :action => 'search'
+  map.admin_edit_student_application 'admin/manage_applications/student_application/:id/manage', :controller => 'student_applications', :action => 'manage'
+  
+    
   #map.student_application 'student_application', :controller => 'student_applications', :action => 'index'
   #map.edit_student_application 'student_application/:id/edit', :controller => 'student_applications', :action => 'edit'
   #map.new_student_application 'student_application/new', :controller => 'student_applications', :action => 'new'
