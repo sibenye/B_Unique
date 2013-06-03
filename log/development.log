@@ -68608,3 +68608,113 @@ Rendered layouts/_toolbar (2.0ms)
 Rendered layouts/_sidebar2 (1.0ms)
 Rendered layouts/_footer (1.0ms)
 Completed in 57ms (View: 30, DB: 2) | 200 OK [http://localhost/admin/manage_applications/student_application]
+
+
+Processing AdministratorsController#dashboard (for 127.0.0.1 at 2013-06-02 13:53:10) [GET]
+  [4;35;1mAdministrator Load (2.0ms)[0m   [0mSELECT * FROM `administrators` WHERE (username = 'admin') LIMIT 1[0m
+Rendering template within layouts/administrators
+Rendering administrators/dashboard
+Rendered layouts/_headtags (2.0ms)
+Rendered layouts/_toolbar (3.0ms)
+Rendered layouts/_sidebar (2.0ms)
+Rendered layouts/_footer (0.0ms)
+Completed in 35ms (View: 21, DB: 2) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-06-02 13:53:10) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/administrators.css" with {:method=>:get}):
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationsController#index (for 127.0.0.1 at 2013-06-02 13:53:13) [GET]
+Rendering template within layouts/applications
+Rendering applications/index
+Rendered layouts/_headtags (1.0ms)
+Rendered layouts/_toolbar (2.0ms)
+Rendered layouts/_sidebar (4.0ms)
+Rendered layouts/_footer (0.0ms)
+Completed in 74ms (View: 69, DB: 0) | 200 OK [http://localhost/forms]
+
+
+Processing StudentApplicationsController#new (for 127.0.0.1 at 2013-06-02 13:53:15) [GET]
+  [4;36;1mCountry Load (3.0ms)[0m   [0;1mSELECT * FROM `countries` [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `countries` [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `countries` [0m
+  [4;35;1mState Load (2.0ms)[0m   [0mSELECT * FROM `states` [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `states` [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `states` [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `states` [0m
+Rendering template within layouts/student_applications
+Rendering student_applications/new
+Rendered layouts/_headtags (1.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered layouts/_sidebar2 (0.0ms)
+Rendered layouts/_footer (0.0ms)
+Completed in 787ms (View: 699, DB: 5) | 200 OK [http://localhost/student_applications/new]
+
+
+Processing AdministratorsController#dashboard (for 127.0.0.1 at 2013-06-02 13:53:57) [GET]
+  [4;35;1mAdministrator Load (2.0ms)[0m   [0mSELECT * FROM `administrators` WHERE (username = 'admin') LIMIT 1[0m
+Rendering template within layouts/administrators
+Rendering administrators/dashboard
+Rendered layouts/_headtags (2.0ms)
+Rendered layouts/_toolbar (1.0ms)
+Rendered layouts/_sidebar (2.0ms)
+Rendered layouts/_footer (0.0ms)
+Completed in 26ms (View: 13, DB: 2) | 200 OK [http://localhost/admin/dashboard]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2013-06-02 13:53:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/administrators.css" with {:method=>:get}):
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  c:/Ruby187/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  c:/Ruby187/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationsController#index (for 127.0.0.1 at 2013-06-02 13:54:01) [GET]
+Rendering template within layouts/applications
+Rendering applications/index
+Rendered layouts/_headtags (1.0ms)
+Rendered layouts/_toolbar (3.0ms)
+Rendered layouts/_sidebar (4.0ms)
+Rendered layouts/_footer (1.0ms)
+Completed in 29ms (View: 24, DB: 0) | 200 OK [http://localhost/forms]
+
+
+Processing EmployeeApplicationsController#new (for 127.0.0.1 at 2013-06-02 13:54:02) [GET]
+  [4;36;1mCountry Load (2.0ms)[0m   [0;1mSELECT * FROM `countries` [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `countries` [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `countries` [0m
+  [4;35;1mState Load (1.0ms)[0m   [0mSELECT * FROM `states` [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `states` [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `states` [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `states` [0m
+Rendering template within layouts/employee_applications
+Rendering employee_applications/new
+Rendered layouts/_headtags (2.0ms)
+Rendered layouts/_toolbar (2.0ms)
+Rendered layouts/_sidebar2 (1.0ms)
+Rendered layouts/_footer (0.0ms)
+Completed in 913ms (View: 265, DB: 3) | 200 OK [http://localhost/employee_applications/new]
